@@ -64,7 +64,7 @@
         <table>
             <tr><th>id</th><th>姓</th><th>名</th><th>年齢</th><th>作成日時</th></tr>
             <?php 
-                if($search_id || $search_name_sei || $search_name_mei || $search_age || $search_datetime){
+                if($search_id || $search_name_sei || $search_name_mei || $search_age){
                     foreach($customers as $customer){
                         $id = $customer['id'];
                         $name_sei = $customer['name_sei'];
