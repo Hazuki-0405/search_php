@@ -60,12 +60,6 @@
             </p>
             <input type="submit" value="検索"/>
         </form>
-        <?php 
-        var_dump($database);
-        var_dump($statement);
-        var_dump($database);
-        var_dump($customers);
-        ?>
         
         <table>
             <tr><th>id</th><th>姓</th><th>名</th><th>年齢</th><th>作成日時</th></tr>
