@@ -7,7 +7,8 @@
     $register_name_mei =  htmlspecialchars($register_name_mei, ENT_QUOTES, 'UTF-8');
     $register_age = $_POST['age'];
     $register_age =  htmlspecialchars($register_age, ENT_QUOTES, 'UTF-8');
-    
+    $register_datetime = $_POST['datetime'];
+    $register_datetime =  htmlspecialchars($register_datetime, ENT_QUOTES, 'UTF-8');
     
     // 全結果表示用
     $all_sql = "SELECT * FROM customer";
@@ -28,18 +29,22 @@
             </p>
             <p>
                 年齢<input type="text" name="age"/>
+                作成日時<input type="text" name="datetime"/>
             </p>
             <input type="submit" value="登録"/>
         </form>
         <?php
-            if($register_name_sei && $register_name_mei && $register_age){
-                $sql = "INSERT INTO customer (name_sei, name_mei, age) VALUES (:name_sei, :name_mei, :age)";
+            if($register_name_sei && $register_name_mei && $register_age && $register_datetime){
+                $sql = "INSERT INTO customer (name_sei, name_mei, age, create_datetime) VALUES (:name_sei, :name_mei, :age, :datetime)";
                 $statement = $database->prepare($sql);
                 $statement->bindParam(':name_sei', $register_name_sei);
                 $statement->bindParam(':name_mei', $register_name_mei);
                 $statement->bindParam(':age', $register_age);
+                $statement->bindParam(':datetime', $register_datetime);
                 $statement->execute();
                 $statement->fetchAll();
+                
+                echo '登録完了';
             } else {
                 echo 'すべての項目を入力してください';
             }
